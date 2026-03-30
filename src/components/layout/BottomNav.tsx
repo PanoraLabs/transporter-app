@@ -12,7 +12,7 @@ const navItems = [
     id: "beranda",
     label: "beranda",
     icon: ({ active }: { active: boolean }) => (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none">
         <path
           d="M3 9.5L12 4l9 5.5v9.5a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1V9.5z"
           stroke={active ? "#FF6B00" : "currentColor"}
@@ -29,7 +29,7 @@ const navItems = [
     label: "pengiriman",
     badge: 2,
     icon: ({ active }: { active: boolean }) => (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none">
         <path
           d="M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6l-4-4H6l-4 4v2"
           stroke={active ? "#FF6B00" : "currentColor"}
@@ -62,7 +62,7 @@ const navItems = [
     id: "riwayat",
     label: "riwayat",
     icon: ({ active }: { active: boolean }) => (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none">
         <path
           d="M8 6h8M8 10h8M8 14h5"
           stroke={active ? "#FF6B00" : "currentColor"}
@@ -85,7 +85,7 @@ const navItems = [
     id: "profil",
     label: "profil",
     icon: ({ active }: { active: boolean }) => (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none">
         <circle
           cx="12"
           cy="8"
@@ -106,9 +106,12 @@ const navItems = [
 
 export function BottomNav({ activeTab, onTabChange }: BottomNavProps) {
   return (
-    <div 
-      className="h-[72px] bg-white border-t border-[rgba(17,24,39,0.08)] flex items-center px-2 pb-2 z-50"
-      style={{ boxShadow: "0 -4px 20px rgba(0,0,0,0.04)" }}
+    <nav 
+      className="fixed bottom-0 left-0 right-0 h-[calc(64px+env(safe-area-inset-bottom,0px))] bg-white border-t border-[rgba(17,24,39,0.08)] flex items-center z-50"
+      style={{ 
+        boxShadow: "0 -4px 20px rgba(0,0,0,0.04)",
+        paddingBottom: "env(safe-area-inset-bottom, 0px)"
+      }}
     >
       {navItems.map((item) => {
         const isActive = activeTab === item.id;
@@ -116,7 +119,7 @@ export function BottomNav({ activeTab, onTabChange }: BottomNavProps) {
           <motion.button
             key={item.id}
             onClick={() => onTabChange(item.id)}
-            className={`flex-1 flex flex-col items-center gap-1 py-2 rounded-xl cursor-pointer relative ${
+            className={`flex-1 flex flex-col items-center justify-center gap-1 h-full cursor-pointer relative ${
               isActive ? "text-[#FF6B00]" : "text-[#6B7280]"
             }`}
             whileTap={{ scale: 0.95 }}
@@ -133,13 +136,12 @@ export function BottomNav({ activeTab, onTabChange }: BottomNavProps) {
               className={`text-[11px] font-medium ${
                 isActive ? "text-[#FF6B00]" : "text-[#6B7280]"
               }`}
-              style={{ fontFamily: "Inter, sans-serif" }}
             >
               {item.label}
             </span>
           </motion.button>
         );
       })}
-    </div>
+    </nav>
   );
 }

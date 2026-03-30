@@ -17,7 +17,7 @@ export function DashboardScreen({ isActive }: DashboardScreenProps) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.2 }}
-      className="absolute inset-0 overflow-y-auto overflow-x-hidden scrollbar-hide pb-[90px]"
+      className="absolute inset-0 overflow-y-auto overflow-x-hidden scrollbar-hide pb-6"
     >
       {/* Header */}
       <div className="px-5 pt-4 pb-2">

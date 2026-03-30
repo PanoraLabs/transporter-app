@@ -25,7 +25,7 @@ export default function Home() {
 
   return (
     <MobileContainer>
-      <div className="flex-1 relative overflow-hidden">
+      <div className="flex-1 relative overflow-hidden pb-[calc(64px+env(safe-area-inset-bottom,0px))]">
         <DashboardScreen isActive={activeTab === "beranda"} />
         <PengirimanScreen isActive={activeTab === "pengiriman"} />
         <RiwayatScreen isActive={activeTab === "riwayat"} />
