@@ -47,98 +47,53 @@
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
   
-  /* Custom Transporter App Colors */
-  --color-bg: #0c0c0d;
-  --color-s1: #141416;
-  --color-s2: #1c1c1f;
-  --color-s3: #242428;
-  --color-s4: #2c2c32;
-  --color-border-custom: rgba(255, 255, 255, 0.08);
-  --color-border-hi: rgba(255, 255, 255, 0.16);
-  --color-orange: #ff6b2b;
-  --color-orange-dim: rgba(255, 107, 43, 0.12);
-  --color-orange-glow: rgba(255, 107, 43, 0.22);
-  --color-orange-lt: #ff8c5a;
-  --color-yellow: #f5c518;
-  --color-yellow-dim: rgba(245, 197, 24, 0.12);
-  --color-green: #2ecc71;
-  --color-green-dim: rgba(46, 204, 113, 0.12);
-  --color-red: #ff4444;
-  --color-red-dim: rgba(255, 68, 68, 0.12);
-  --color-blue: #4a9eff;
-  --color-blue-dim: rgba(74, 158, 255, 0.12);
-  --color-text: #f0f0f2;
-  --color-text-muted: #6e6e7a;
-  --color-text-faint: rgba(240, 240, 242, 0.28);
+  /* PANORA Design System Colors */
+  --color-horizon: #F9FAFB;
+  --color-frosted: #F3F4F6;
+  --color-solar: #FF6B00;
+  --color-obsidian: #111827;
+  --color-teal: #00D1FF;
+  
+  /* UI Colors */
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-info: #4A9EFF;
+  --color-danger: #EF4444;
 }
 
 :root {
-  --background: #0c0c0d;
-  --foreground: #f0f0f2;
-  --card: #1c1c1f;
-  --card-foreground: #f0f0f2;
-  --popover: #1c1c1f;
-  --popover-foreground: #f0f0f2;
-  --primary: #ff6b2b;
-  --primary-foreground: #f0f0f2;
-  --secondary: #242428;
-  --secondary-foreground: #f0f0f2;
-  --muted: #242428;
-  --muted-foreground: #6e6e7a;
-  --accent: #ff6b2b;
-  --accent-foreground: #f0f0f2;
-  --destructive: #ff4444;
-  --border: rgba(255, 255, 255, 0.08);
-  --input: rgba(255, 255, 255, 0.08);
-  --ring: #ff6b2b;
-  --chart-1: #ff6b2b;
-  --chart-2: #f5c518;
-  --chart-3: #2ecc71;
-  --chart-4: #4a9eff;
-  --chart-5: #ff4444;
+  --background: #F9FAFB;
+  --foreground: #111827;
+  --card: #FFFFFF;
+  --card-foreground: #111827;
+  --popover: #FFFFFF;
+  --popover-foreground: #111827;
+  --primary: #FF6B00;
+  --primary-foreground: #FFFFFF;
+  --secondary: #F3F4F6;
+  --secondary-foreground: #111827;
+  --muted: #F3F4F6;
+  --muted-foreground: #6B7280;
+  --accent: #00D1FF;
+  --accent-foreground: #111827;
+  --destructive: #EF4444;
+  --border: rgba(17, 24, 39, 0.08);
+  --input: rgba(17, 24, 39, 0.08);
+  --ring: #FF6B00;
+  --chart-1: #FF6B00;
+  --chart-2: #00D1FF;
+  --chart-3: #10B981;
+  --chart-4: #4A9EFF;
+  --chart-5: #EF4444;
   --radius: 0.75rem;
-  --sidebar: #141416;
-  --sidebar-foreground: #f0f0f2;
-  --sidebar-primary: #ff6b2b;
-  --sidebar-primary-foreground: #f0f0f2;
-  --sidebar-accent: #242428;
-  --sidebar-accent-foreground: #f0f0f2;
-  --sidebar-border: rgba(255, 255, 255, 0.08);
-  --sidebar-ring: #ff6b2b;
-}
-
-.dark {
-  --background: #0c0c0d;
-  --foreground: #f0f0f2;
-  --card: #1c1c1f;
-  --card-foreground: #f0f0f2;
-  --popover: #1c1c1f;
-  --popover-foreground: #f0f0f2;
-  --primary: #ff6b2b;
-  --primary-foreground: #f0f0f2;
-  --secondary: #242428;
-  --secondary-foreground: #f0f0f2;
-  --muted: #242428;
-  --muted-foreground: #6e6e7a;
-  --accent: #ff6b2b;
-  --accent-foreground: #f0f0f2;
-  --destructive: #ff4444;
-  --border: rgba(255, 255, 255, 0.08);
-  --input: rgba(255, 255, 255, 0.08);
-  --ring: #ff6b2b;
-  --chart-1: #ff6b2b;
-  --chart-2: #f5c518;
-  --chart-3: #2ecc71;
-  --chart-4: #4a9eff;
-  --chart-5: #ff4444;
-  --sidebar: #141416;
-  --sidebar-foreground: #f0f0f2;
-  --sidebar-primary: #ff6b2b;
-  --sidebar-primary-foreground: #f0f0f2;
-  --sidebar-accent: #242428;
-  --sidebar-accent-foreground: #f0f0f2;
-  --sidebar-border: rgba(255, 255, 255, 0.08);
-  --sidebar-ring: #ff6b2b;
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #111827;
+  --sidebar-primary: #FF6B00;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #F3F4F6;
+  --sidebar-accent-foreground: #111827;
+  --sidebar-border: rgba(17, 24, 39, 0.08);
+  --sidebar-ring: #FF6B00;
 }
 
 @layer base {
@@ -147,17 +102,26 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: "Barlow", sans-serif;
+    font-family: "Inter", sans-serif;
   }
   html {
     @apply font-sans;
   }
 }
 
-/* Custom Animations */
-@keyframes blink-pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
+/* Graph Paper Micro Grid Background */
+.graph-paper {
+  background-color: #F9FAFB;
+  background-image: 
+    linear-gradient(to right, rgba(17, 24, 39, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(17, 24, 39, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Status indicator animations */
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.95); }
 }
 
 @keyframes slide-up {
@@ -165,30 +129,12 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes map-drift {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(30px); }
-}
-
-.animate-blink-pulse {
-  animation: blink-pulse 1.4s infinite;
+.animate-pulse-subtle {
+  animation: pulse-subtle 2s ease-in-out infinite;
 }
 
 .animate-slide-up {
   animation: slide-up 0.25s ease-out;
-}
-
-.animate-fade-in {
-  animation: fade-in 0.25s ease-out;
-}
-
-.animate-map-drift {
-  animation: map-drift 15s linear infinite;
 }
 
 /* Hide scrollbar */
@@ -198,4 +144,32 @@
 }
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+/* Touch-friendly tap targets */
+.tap-target {
+  min-height: 48px;
+  min-width: 48px;
+}
+
+/* Card styles */
+.panora-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(17, 24, 39, 0.08);
+  border-radius: 12px;
+}
+
+/* Typography - lowercase for mobile UI */
+.text-title {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.text-label {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: lowercase;
 }

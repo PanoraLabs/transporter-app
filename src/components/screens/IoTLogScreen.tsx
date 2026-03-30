@@ -9,84 +9,142 @@ interface IoTLogScreenProps {
 export function IoTLogScreen({ isActive }: IoTLogScreenProps) {
   if (!isActive) return null;
 
+  const sensors = [
+    { label: "suhu kargo", value: "4.2", unit: "°C", status: "normal", color: "#10B981" },
+    { label: "kelembaban", value: "78", unit: "% RH", status: "normal", color: "#4A9EFF" },
+    { label: "gps signal", value: "94", unit: "%", status: "lock", color: "#FF6B00" },
+    { label: "getaran", value: "2.8", unit: "G", status: "warning", color: "#F59E0B" },
+  ];
+
   return (
     <motion.div
-      initial={{ opacity: 1, y: 0 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 12 }}
-      transition={{ duration: 0.25, ease: "easeOut" }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
       className="absolute inset-0 overflow-y-auto overflow-x-hidden scrollbar-hide pb-[90px]"
     >
-      <div className="px-[22px] pt-5 pb-4 flex justify-between items-end">
+      {/* Header */}
+      <div className="px-5 pt-5 pb-3 flex justify-between items-end">
         <div>
-          <div className="text-[9px] tracking-[0.18em] uppercase text-[rgba(240,240,242,0.28)] mb-1" style={{ fontFamily: "Roboto Mono, monospace" }}>
-            // IoT Tracking Aktif
+          <div className="text-[12px] text-[#6B7280] mb-0.5" style={{ fontFamily: "Inter, sans-serif" }}>
+            monitoring realtime
           </div>
-          <div className="text-[24px] font-bold" style={{ fontFamily: "Bitter, serif" }}>
-            Panora<em className="italic text-[#ff6b2b]">-Log</em>
+          <div className="text-[24px] font-bold text-[#111827]" style={{ fontFamily: "Inter, sans-serif", letterSpacing: "-0.02em" }}>
+            sensor IoT
           </div>
         </div>
-        <div className="flex items-center gap-1.5 px-3 py-1.5 bg-[rgba(46,204,113,0.12)] border border-[rgba(46,204,113,0.3)] rounded-[20px]">
-          <div className="w-1.5 h-1.5 bg-[#2ecc71] rounded-full animate-blink-pulse" />
-          <span className="text-[9px] font-bold text-[#2ecc71] tracking-wide uppercase" style={{ fontFamily: "Roboto Mono, monospace" }}>
-            LIVE
+        <div className="flex items-center gap-1.5 px-3 py-1.5 bg-[rgba(16,185,129,0.12)] border border-[rgba(16,185,129,0.3)] rounded-full">
+          <motion.div 
+            className="w-1.5 h-1.5 bg-[#10B981] rounded-full"
+            animate={{ opacity: [1, 0.4, 1] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+          />
+          <span className="text-[10px] font-semibold text-[#10B981] tracking-wide" style={{ fontFamily: "Inter, sans-serif" }}>
+            live
           </span>
         </div>
       </div>
 
-      <div className="mx-[22px] mb-4 h-[200px] bg-[#1c1c1f] border border-[rgba(255,255,255,0.08)] rounded-xl relative overflow-hidden flex items-center justify-center">
-        <div className="absolute top-3 left-3.5 text-[9px] tracking-[0.18em] uppercase text-[#ff6b2b] bg-[rgba(12,12,13,0.8)] px-2.5 py-1 rounded-md border border-[rgba(255,107,43,0.2)]" style={{ fontFamily: "Roboto Mono, monospace" }}>
-          GPS LIVE · Jawa Tengah
+      {/* Map Visualization */}
+      <div className="mx-5 mb-4 h-[180px] bg-white border border-[rgba(17,24,39,0.08)] rounded-xl relative overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.05)]">
+        <div className="absolute top-3 left-3 text-[10px] font-medium text-[#FF6B00] bg-[rgba(255,107,0,0.08)] px-2.5 py-1 rounded-md border border-[rgba(255,107,0,0.15)]" style={{ fontFamily: "Inter, sans-serif" }}>
+          gps live · jawa tengah
         </div>
-        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 390 200" fill="none">
-          <path d="M40 160 Q120 140 180 120 Q240 100 300 90 Q340 85 360 80" stroke="rgba(255,107,43,0.25)" strokeWidth="3" strokeDasharray="8,6" />
-          <path d="M40 160 Q120 140 180 120 Q220 106 248 98" stroke="#ff6b2b" strokeWidth="2.5" strokeLinecap="round" />
-          <circle cx="248" cy="98" r="8" fill="rgba(255,107,43,0.2)" stroke="#ff6b2b" strokeWidth="1.5" />
-          <circle cx="248" cy="98" r="4" fill="#ff6b2b" />
-          <circle cx="40" cy="160" r="5" fill="#2ecc71" />
-          <circle cx="360" cy="80" r="5" fill="rgba(255,255,255,0.3)" stroke="rgba(255,255,255,0.4)" strokeWidth="1.5" />
+        
+        {/* Simple Route Visualization */}
+        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 350 180" fill="none">
+          {/* Route path - dashed line */}
+          <path 
+            d="M30 140 Q100 120 150 100 Q200 80 250 70 Q300 60 320 50" 
+            stroke="rgba(17,24,39,0.1)" 
+            strokeWidth="3" 
+            strokeDasharray="6,4"
+            fill="none"
+          />
+          {/* Active route - solid */}
+          <path 
+            d="M30 140 Q100 120 150 100 Q200 80 220 75" 
+            stroke="#FF6B00" 
+            strokeWidth="2.5" 
+            strokeLinecap="round"
+            fill="none"
+          />
+          {/* Current position */}
+          <circle cx="220" cy="75" r="7" fill="rgba(255,107,0,0.2)" stroke="#FF6B00" strokeWidth="2" />
+          <circle cx="220" cy="75" r="4" fill="#FF6B00" />
+          {/* Start point */}
+          <circle cx="30" cy="140" r="4" fill="#10B981" />
+          {/* End point */}
+          <circle cx="320" cy="50" r="4" fill="rgba(17,24,39,0.3)" />
         </svg>
-      </div>
 
-      <div className="px-[22px] mb-4">
-        <div className="text-[9px] tracking-[0.18em] uppercase text-[rgba(240,240,242,0.28)] mb-3" style={{ fontFamily: "Roboto Mono, monospace" }}>
-          // Sensor IoT On-Chain
-        </div>
-        <div className="grid grid-cols-2 gap-2.5">
-          <div className="bg-[#1c1c1f] border border-[rgba(255,255,255,0.08)] rounded-xl p-4">
-            <div className="text-[9px] tracking-[0.18em] uppercase text-[#6e6e7a] mb-2" style={{ fontFamily: "Roboto Mono, monospace" }}>Suhu Kargo</div>
-            <div className="text-[32px] font-bold text-[#2ecc71] leading-none" style={{ fontFamily: "Bitter, serif" }}>4.2</div>
-            <div className="text-[12px] text-[#6e6e7a] mb-2">°Celsius</div>
-            <div className="text-[10px] text-[#2ecc71]">✓ Normal (0-8°C)</div>
-          </div>
-          <div className="bg-[#1c1c1f] border border-[rgba(255,255,255,0.08)] rounded-xl p-4">
-            <div className="text-[9px] tracking-[0.18em] uppercase text-[#6e6e7a] mb-2" style={{ fontFamily: "Roboto Mono, monospace" }}>Kelembaban</div>
-            <div className="text-[32px] font-bold text-[#4a9eff] leading-none" style={{ fontFamily: "Bitter, serif" }}>78</div>
-            <div className="text-[12px] text-[#6e6e7a] mb-2">% RH</div>
-            <div className="text-[10px] text-[#4a9eff]">✓ Normal</div>
-          </div>
-          <div className="bg-[#1c1c1f] border border-[rgba(255,255,255,0.08)] rounded-xl p-4">
-            <div className="text-[9px] tracking-[0.18em] uppercase text-[#6e6e7a] mb-2" style={{ fontFamily: "Roboto Mono, monospace" }}>GPS Signal</div>
-            <div className="text-[32px] font-bold text-[#ff8c5a] leading-none" style={{ fontFamily: "Bitter, serif" }}>94</div>
-            <div className="text-[12px] text-[#6e6e7a] mb-2">% Akurasi</div>
-            <div className="text-[10px] text-[#ff6b2b]">● Lock 12 Satelit</div>
-          </div>
-          <div className="bg-[#1c1c1f] border border-[rgba(245,197,24,0.3)] rounded-xl p-4 bg-gradient-to-br from-[rgba(245,197,24,0.05)] to-[#1c1c1f]">
-            <div className="text-[9px] tracking-[0.18em] uppercase text-[#6e6e7a] mb-2" style={{ fontFamily: "Roboto Mono, monospace" }}>Getaran</div>
-            <div className="text-[32px] font-bold text-[#f5c518] leading-none" style={{ fontFamily: "Bitter, serif" }}>2.8</div>
-            <div className="text-[12px] text-[#6e6e7a] mb-2">G-Force</div>
-            <div className="text-[10px] text-[#f5c518]">⚠ Sedikit Tinggi</div>
-          </div>
+        {/* Distance indicator */}
+        <div className="absolute bottom-3 right-3 bg-white border border-[rgba(17,24,39,0.08)] rounded-lg px-3 py-1.5">
+          <div className="text-[10px] text-[#6B7280]">sisa jarak</div>
+          <div className="text-[14px] font-bold text-[#111827]">342 km</div>
         </div>
       </div>
 
-      <div className="mx-[22px] mb-4 bg-[rgba(46,204,113,0.12)] border border-[rgba(46,204,113,0.3)] rounded-xl p-4 flex gap-3.5">
-        <div className="text-[24px] shrink-0">✅</div>
-        <div>
-          <div className="text-[13px] font-bold text-[#2ecc71] mb-1">Kondisi Kargo Optimal</div>
-          <div className="text-[11px] text-[#6e6e7a] leading-relaxed">
-            Suhu terjaga 4.2°C · Kontrak asuransi tidak terpicu · Data tersinkron ke Solana setiap 30 detik
+      {/* Sensor Grid */}
+      <div className="px-5 mb-2">
+        <div className="text-[12px] text-[#6B7280]" style={{ fontFamily: "Inter, sans-serif" }}>
+          data sensor
+        </div>
+      </div>
+      
+      <div className="px-5 mb-4">
+        <div className="grid grid-cols-2 gap-3">
+          {sensors.map((sensor) => (
+            <div 
+              key={sensor.label}
+              className="bg-white border border-[rgba(17,24,39,0.08)] rounded-xl p-4 shadow-[0_1px_3px_rgba(0,0,0,0.05)]"
+            >
+              <div className="text-[11px] text-[#6B7280] mb-2" style={{ fontFamily: "Inter, sans-serif" }}>
+                {sensor.label}
+              </div>
+              <div className="flex items-baseline gap-1">
+                <div 
+                  className="text-[32px] font-bold leading-none" 
+                  style={{ fontFamily: "Inter, sans-serif", letterSpacing: "-0.02em", color: sensor.color }}
+                >
+                  {sensor.value}
+                </div>
+                <div className="text-[13px] text-[#6B7280]">{sensor.unit}</div>
+              </div>
+              <div className="mt-2 flex items-center gap-1">
+                {sensor.status === "normal" && (
+                  <span className="text-[11px] text-[#10B981] font-medium">✓ normal</span>
+                )}
+                {sensor.status === "warning" && (
+                  <span className="text-[11px] text-[#F59E0B] font-medium">⚠ perhatian</span>
+                )}
+                {sensor.status === "lock" && (
+                  <span className="text-[11px] text-[#FF6B00] font-medium">● lock 12 satelit</span>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Status Summary */}
+      <div className="mx-5 mb-4 bg-[rgba(16,185,129,0.08)] border border-[rgba(16,185,129,0.2)] rounded-xl p-4">
+        <div className="flex items-start gap-3">
+          <div className="text-[20px] shrink-0">✓</div>
+          <div>
+            <div className="text-[14px] font-semibold text-[#10B981] mb-1">kondisi kargo optimal</div>
+            <div className="text-[12px] text-[#6B7280] leading-relaxed">
+              suhu terjaga 4.2°C · kontrak asuransi tidak terpicu · data tersinkron setiap 30 detik
+            </div>
           </div>
+        </div>
+      </div>
+
+      {/* Last Update */}
+      <div className="px-5 text-center">
+        <div className="text-[11px] text-[#6B7280]">
+          update terakhir: 2 detik yang lalu
         </div>
       </div>
     </motion.div>

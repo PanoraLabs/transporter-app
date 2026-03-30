@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { StatusBadge } from "@/components/ui/StatusBadge";
+import { ActionButton } from "@/components/ui/ActionButton";
 
 interface DashboardScreenProps {
   isActive: boolean;
@@ -11,120 +13,179 @@ export function DashboardScreen({ isActive }: DashboardScreenProps) {
 
   return (
     <motion.div 
-      initial={{ opacity: 1, y: 0 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 12 }}
-      transition={{ duration: 0.25, ease: "easeOut" }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
       className="absolute inset-0 overflow-y-auto overflow-x-hidden scrollbar-hide pb-[90px]"
     >
-      {/* Hero Section */}
-      <div className="px-[22px] pt-4 pb-0 bg-gradient-to-b from-[#141416] to-transparent">
-        <div className="flex justify-between items-start mb-[18px]">
+      {/* Header */}
+      <div className="px-5 pt-4 pb-2">
+        <div className="flex justify-between items-start mb-4">
           <div>
-            <div className="text-[9px] tracking-[0.22em] uppercase text-[#ff6b2b] mb-1" style={{ fontFamily: "Roboto Mono, monospace" }}>
-              // Driver · PANORA-LOG
+            <div className="text-[12px] text-[#6B7280] mb-0.5" style={{ fontFamily: "Inter, sans-serif" }}>
+              driver · panora-log
             </div>
-            <div className="text-[22px] font-bold leading-tight" style={{ fontFamily: "Bitter, serif" }}>
-              Hendra<br />Kusuma
+            <div className="text-[22px] font-bold text-[#111827]" style={{ fontFamily: "Inter, sans-serif", letterSpacing: "-0.02em" }}>
+              hendra kusuma
             </div>
-            <div className="text-[12px] text-[#6e6e7a] mt-[3px]">Nopol: B 9234 XK · Truk Box 8T</div>
+            <div className="text-[13px] text-[#6B7280] mt-0.5">nopol: B 9234 XK · truk box 8T</div>
           </div>
-          <motion.button whileTap={{ scale: 0.95 }} className="flex items-center gap-1.5 px-3.5 py-2 bg-[rgba(46,204,113,0.12)] border border-[rgba(46,204,113,0.3)] rounded-[20px] cursor-pointer">
-            <div className="w-[7px] h-[7px] bg-[#2ecc71] rounded-full animate-blink-pulse" />
-            <span className="text-[11px] font-bold text-[#2ecc71] tracking-wide" style={{ fontFamily: "Roboto Mono, monospace" }}>Online</span>
-          </motion.button>
+          <div className="flex items-center gap-1.5 px-3 py-1.5 bg-[rgba(16,185,129,0.12)] border border-[rgba(16,185,129,0.3)] rounded-full">
+            <motion.div 
+              className="w-2 h-2 bg-[#10B981] rounded-full"
+              animate={{ opacity: [1, 0.4, 1] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            />
+            <span className="text-[12px] font-semibold text-[#10B981]" style={{ fontFamily: "Inter, sans-serif" }}>online</span>
+          </div>
         </div>
       </div>
 
       {/* Earnings Card */}
-      <div className="mx-[22px] mb-4 bg-gradient-to-br from-[#1a1008] via-[#1c1510] to-[#0e0e10] border border-[rgba(255,107,43,0.25)] rounded-xl p-5 relative overflow-hidden">
-        <div className="absolute -top-12 -right-12 w-[150px] h-[150px] rounded-full bg-[radial-gradient(circle,rgba(255,107,43,0.1),transparent_70%)]" />
-        <div className="text-[9px] tracking-[0.2em] uppercase text-[#6e6e7a] mb-1.5" style={{ fontFamily: "Roboto Mono, monospace" }}>// Pendapatan Bulan Ini</div>
-        <div className="text-[34px] font-bold text-[#ff8c5a] leading-none mb-1" style={{ fontFamily: "Bitter, serif" }}>Rp 8.450.000</div>
-        <div className="text-[12px] text-[#6e6e7a] mb-[18px]">14 trip selesai · +Rp 1.2jt vs bulan lalu</div>
-        <div className="flex gap-2.5">
-          <motion.button whileTap={{ scale: 0.95 }} className="flex-1 py-2.5 bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.08)] rounded-lg text-center cursor-pointer">
-            <div className="text-[15px] mb-0.5">📊</div>
-            <div className="text-[10px] text-[#6e6e7a] font-semibold">Riwayat</div>
+      <div className="mx-5 mb-4 bg-white border border-[rgba(17,24,39,0.08)] rounded-xl p-4 shadow-[0_1px_3px_rgba(0,0,0,0.05)]">
+        <div className="text-[12px] text-[#6B7280] mb-1" style={{ fontFamily: "Inter, sans-serif" }}>
+          pendapatan bulan ini
+        </div>
+        <div className="text-[32px] font-bold text-[#FF6B00] leading-none mb-1" style={{ fontFamily: "Inter, sans-serif", letterSpacing: "-0.02em" }}>
+          Rp 8.450.000
+        </div>
+        <div className="text-[13px] text-[#6B7280] mb-4">14 trip selesai · +Rp 1.2jt vs bulan lalu</div>
+        
+        <div className="flex gap-2">
+          <motion.button 
+            whileTap={{ scale: 0.98 }}
+            className="flex-1 py-2.5 bg-[#F3F4F6] rounded-lg text-center cursor-pointer"
+          >
+            <div className="text-[12px] font-medium text-[#111827]">riwayat</div>
           </motion.button>
-          <motion.button whileTap={{ scale: 0.95 }} className="flex-1 py-2.5 bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.08)] rounded-lg text-center cursor-pointer">
-            <div className="text-[15px] mb-0.5">↑</div>
-            <div className="text-[10px] text-[#6e6e7a] font-semibold">Tarik</div>
+          <motion.button 
+            whileTap={{ scale: 0.98 }}
+            className="flex-1 py-2.5 bg-[#F3F4F6] rounded-lg text-center cursor-pointer"
+          >
+            <div className="text-[12px] font-medium text-[#111827]">tarik</div>
           </motion.button>
-          <motion.button whileTap={{ scale: 0.95 }} className="flex-1 py-2.5 bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.08)] rounded-lg text-center cursor-pointer">
-            <div className="text-[15px] mb-0.5">🔄</div>
-            <div className="text-[10px] text-[#6e6e7a] font-semibold">Backload</div>
-          </motion.button>
-          <motion.button whileTap={{ scale: 0.95 }} className="flex-1 py-2.5 bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.08)] rounded-lg text-center cursor-pointer">
-            <div className="text-[15px] mb-0.5">🛡</div>
-            <div className="text-[10px] text-[#6e6e7a] font-semibold">Klaim</div>
+          <motion.button 
+            whileTap={{ scale: 0.98 }}
+            className="flex-1 py-2.5 bg-[#F3F4F6] rounded-lg text-center cursor-pointer"
+          >
+            <div className="text-[12px] font-medium text-[#111827]">backload</div>
           </motion.button>
         </div>
       </div>
 
       {/* Active Trip */}
-      <div className="text-[9px] tracking-[0.22em] uppercase text-[rgba(240,240,242,0.28)] px-[22px] mb-2.5" style={{ fontFamily: "Roboto Mono, monospace" }}>// Trip Aktif</div>
-      <motion.div whileTap={{ scale: 0.98 }} className="mx-[22px] mb-4 bg-[#1c1c1f] border border-[rgba(255,255,255,0.08)] rounded-xl overflow-hidden cursor-pointer">
-        <div className="px-4 py-3.5 bg-gradient-to-r from-[rgba(255,107,43,0.08)] to-transparent border-b border-[rgba(255,255,255,0.08)] flex items-center gap-2.5">
-          <div className="w-2 h-2 bg-[#ff6b2b] rounded-full animate-blink-pulse shrink-0" />
-          <div className="text-[12px] font-bold text-[#ff6b2b] flex-1 tracking-wide uppercase" style={{ fontFamily: "Roboto Mono, monospace" }}>Pengiriman Berlangsung</div>
-          <div className="text-[11px] text-[#6e6e7a]">ETA 2j 14m</div>
+      <div className="px-5 mb-2">
+        <div className="text-[12px] text-[#6B7280] mb-2" style={{ fontFamily: "Inter, sans-serif" }}>
+          trip aktif
         </div>
-        <div className="px-4 py-3.5 flex items-center gap-0">
-          <div className="text-[16px] font-bold" style={{ fontFamily: "Bitter, serif" }}>Sleman</div>
-          <div className="flex-1 flex items-center px-2.5 gap-1">
-            <div className="flex-1 h-px bg-gradient-to-r from-[#ff6b2b] to-[rgba(255,107,43,0.3)]" />
-            <div className="text-[16px]">🚛</div>
-            <div className="flex-1 h-px bg-gradient-to-r from-[rgba(255,107,43,0.3)] to-[rgba(255,107,43,0.08)]" />
-          </div>
-          <div className="text-[16px] font-bold" style={{ fontFamily: "Bitter, serif" }}>Cibitung</div>
+      </div>
+      
+      <motion.div 
+        whileTap={{ scale: 0.99 }}
+        className="mx-5 mb-4 bg-white border border-[rgba(255,107,0,0.3)] rounded-xl overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.05)] cursor-pointer"
+      >
+        <div className="px-4 py-3 bg-gradient-to-r from-[rgba(255,107,0,0.06)] to-transparent border-b border-[rgba(17,24,39,0.06)] flex items-center justify-between">
+          <StatusBadge status="dalam perjalanan" />
+          <div className="text-[13px] font-medium text-[#6B7280]">ETA 2j 14m</div>
         </div>
-        <div className="px-4 pb-3.5 grid grid-cols-3 gap-2.5">
-          <div className="bg-[#242428] rounded-lg p-2.5 text-center">
-            <div className="text-[14px] mb-1">🌡️</div>
-            <div className="text-[15px] font-bold text-[#2ecc71] leading-none" style={{ fontFamily: "Bitter, serif" }}>4.2°C</div>
-            <div className="text-[9px] text-[#6e6e7a] mt-0.5 tracking-wide uppercase" style={{ fontFamily: "Roboto Mono, monospace" }}>Suhu</div>
+        
+        <div className="px-4 py-3">
+          <div className="flex items-center gap-3 mb-3">
+            <div className="flex-1">
+              <div className="text-[18px] font-bold text-[#111827]" style={{ fontFamily: "Inter, sans-serif", letterSpacing: "-0.02em" }}>Sleman</div>
+              <div className="text-[12px] text-[#6B7280]">pickup</div>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-px bg-[#FF6B00]" />
+              <div className="text-[20px]">🚛</div>
+              <div className="w-8 h-px bg-[#FF6B00]" />
+            </div>
+            <div className="flex-1 text-right">
+              <div className="text-[18px] font-bold text-[#111827]" style={{ fontFamily: "Inter, sans-serif", letterSpacing: "-0.02em" }}>Cibitung</div>
+              <div className="text-[12px] text-[#6B7280]">tujuan</div>
+            </div>
           </div>
-          <div className="bg-[#242428] rounded-lg p-2.5 text-center">
-            <div className="text-[14px] mb-1">📍</div>
-            <div className="text-[15px] font-bold text-[#4a9eff] leading-none" style={{ fontFamily: "Bitter, serif" }}>68km/h</div>
-            <div className="text-[9px] text-[#6e6e7a] mt-0.5 tracking-wide uppercase" style={{ fontFamily: "Roboto Mono, monospace" }}>Kecepatan</div>
+          
+          <div className="grid grid-cols-3 gap-2">
+            <div className="bg-[#F9FAFB] rounded-lg p-2.5 text-center border border-[rgba(17,24,39,0.06)]">
+              <div className="text-[11px] text-[#6B7280] mb-0.5">suhu</div>
+              <div className="text-[18px] font-bold text-[#10B981]" style={{ fontFamily: "Inter, sans-serif" }}>4.2°C</div>
+            </div>
+            <div className="bg-[#F9FAFB] rounded-lg p-2.5 text-center border border-[rgba(17,24,39,0.06)]">
+              <div className="text-[11px] text-[#6B7280] mb-0.5">kecepatan</div>
+              <div className="text-[18px] font-bold text-[#111827]" style={{ fontFamily: "Inter, sans-serif" }}>68</div>
+              <div className="text-[10px] text-[#6B7280]">km/j</div>
+            </div>
+            <div className="bg-[#F9FAFB] rounded-lg p-2.5 text-center border border-[rgba(17,24,39,0.06)]">
+              <div className="text-[11px] text-[#6B7280] mb-0.5">muatan</div>
+              <div className="text-[18px] font-bold text-[#FF6B00]" style={{ fontFamily: "Inter, sans-serif" }}>6.8T</div>
+            </div>
           </div>
-          <div className="bg-[#242428] rounded-lg p-2.5 text-center">
-            <div className="text-[14px] mb-1">📦</div>
-            <div className="text-[15px] font-bold text-[#ff8c5a] leading-none" style={{ fontFamily: "Bitter, serif" }}>6.8T</div>
-            <div className="text-[9px] text-[#6e6e7a] mt-0.5 tracking-wide uppercase" style={{ fontFamily: "Roboto Mono, monospace" }}>Muatan</div>
-          </div>
+        </div>
+        
+        <div className="px-4 pb-4">
+          <ActionButton size="md">
+            lihat detail pengiriman
+          </ActionButton>
         </div>
       </motion.div>
 
       {/* Stats Grid */}
-      <div className="text-[9px] tracking-[0.22em] uppercase text-[rgba(240,240,242,0.28)] px-[22px] mb-2.5 mt-4" style={{ fontFamily: "Roboto Mono, monospace" }}>// Statistik Armada</div>
-      <div className="grid grid-cols-2 gap-2.5 px-[22px] mb-[18px]">
-        <motion.div whileTap={{ scale: 0.98 }} className="bg-[#1c1c1f] border border-[rgba(255,255,255,0.08)] rounded-xl p-4 cursor-pointer">
-          <div className="text-[20px] mb-2">🚛</div>
-          <div className="text-[24px] font-bold text-[#ff8c5a] leading-none mb-0.5" style={{ fontFamily: "Bitter, serif" }}>14</div>
-          <div className="text-[11px] text-[#6e6e7a]">Trip Bulan Ini</div>
-          <div className="text-[10px] text-[#2ecc71] mt-[3px]">▲ 3 vs bulan lalu</div>
+      <div className="px-5 mb-2 mt-5">
+        <div className="text-[12px] text-[#6B7280]" style={{ fontFamily: "Inter, sans-serif" }}>
+          statistik armada
+        </div>
+      </div>
+      
+      <div className="grid grid-cols-2 gap-3 px-5 mb-4">
+        <motion.div 
+          whileTap={{ scale: 0.98 }} 
+          className="bg-white border border-[rgba(17,24,39,0.08)] rounded-xl p-4 cursor-pointer shadow-[0_1px_3px_rgba(0,0,0,0.05)]"
+        >
+          <div className="text-[24px] font-bold text-[#FF6B00] leading-none mb-1" style={{ fontFamily: "Inter, sans-serif", letterSpacing: "-0.02em" }}>14</div>
+          <div className="text-[13px] text-[#6B7280]">trip bulan ini</div>
+          <div className="text-[11px] text-[#10B981] mt-1">▲ 3 vs bulan lalu</div>
         </motion.div>
-        <motion.div whileTap={{ scale: 0.98 }} className="bg-[#1c1c1f] border border-[rgba(255,255,255,0.08)] rounded-xl p-4 cursor-pointer">
-          <div className="text-[20px] mb-2">🔄</div>
-          <div className="text-[24px] font-bold text-[#f5c518] leading-none mb-0.5" style={{ fontFamily: "Bitter, serif" }}>4</div>
-          <div className="text-[11px] text-[#6e6e7a]">Backload Ditawar</div>
-          <div className="text-[10px] text-[#2ecc71] mt-[3px]">Rp 640rb extra</div>
+        
+        <motion.div 
+          whileTap={{ scale: 0.98 }} 
+          className="bg-white border border-[rgba(17,24,39,0.08)] rounded-xl p-4 cursor-pointer shadow-[0_1px_3px_rgba(0,0,0,0.05)]"
+        >
+          <div className="text-[24px] font-bold text-[#111827] leading-none mb-1" style={{ fontFamily: "Inter, sans-serif", letterSpacing: "-0.02em" }}>4</div>
+          <div className="text-[13px] text-[#6B7280]">backload ditawar</div>
+          <div className="text-[11px] text-[#10B981] mt-1">+Rp 640rb extra</div>
         </motion.div>
-        <motion.div whileTap={{ scale: 0.98 }} className="bg-[#1c1c1f] border border-[rgba(255,255,255,0.08)] rounded-xl p-4 cursor-pointer">
-          <div className="text-[20px] mb-2">🛡</div>
-          <div className="text-[24px] font-bold text-[#2ecc71] leading-none mb-0.5" style={{ fontFamily: "Bitter, serif" }}>Aktif</div>
-          <div className="text-[11px] text-[#6e6e7a]">Status Asuransi</div>
-          <div className="text-[10px] text-[#6e6e7a] mt-[3px]">1 klaim pending</div>
+        
+        <motion.div 
+          whileTap={{ scale: 0.98 }} 
+          className="bg-white border border-[rgba(17,24,39,0.08)] rounded-xl p-4 cursor-pointer shadow-[0_1px_3px_rgba(0,0,0,0.05)]"
+        >
+          <div className="text-[24px] font-bold text-[#10B981] leading-none mb-1" style={{ fontFamily: "Inter, sans-serif", letterSpacing: "-0.02em" }}>aktif</div>
+          <div className="text-[13px] text-[#6B7280]">status asuransi</div>
+          <div className="text-[11px] text-[#6B7280] mt-1">1 klaim diproses</div>
         </motion.div>
-        <motion.div whileTap={{ scale: 0.98 }} className="bg-[#1c1c1f] border border-[rgba(255,255,255,0.08)] rounded-xl p-4 cursor-pointer">
-          <div className="text-[20px] mb-2">⭐</div>
-          <div className="text-[24px] font-bold text-[#f5c518] leading-none mb-0.5" style={{ fontFamily: "Bitter, serif" }}>4.9</div>
-          <div className="text-[11px] text-[#6e6e7a]">Rating On-Chain</div>
-          <div className="text-[10px] text-[#6e6e7a] mt-[3px]">18 ulasan</div>
+        
+        <motion.div 
+          whileTap={{ scale: 0.98 }} 
+          className="bg-white border border-[rgba(17,24,39,0.08)] rounded-xl p-4 cursor-pointer shadow-[0_1px_3px_rgba(0,0,0,0.05)]"
+        >
+          <div className="text-[24px] font-bold text-[#111827] leading-none mb-1" style={{ fontFamily: "Inter, sans-serif", letterSpacing: "-0.02em" }}>4.9★</div>
+          <div className="text-[13px] text-[#6B7280]">rating on-chain</div>
+          <div className="text-[11px] text-[#6B7280] mt-1">18 ulasan</div>
         </motion.div>
+      </div>
+
+      {/* Quick Actions */}
+      <div className="px-5 mt-6 mb-4">
+        <div className="text-[12px] text-[#6B7280] mb-3" style={{ fontFamily: "Inter, sans-serif" }}>
+          aksi cepat
+        </div>
+        <div className="flex flex-col gap-2">
+          <ActionButton icon={<span>📍</span>}>
+            terima order baru
+          </ActionButton>
+        </div>
       </div>
     </motion.div>
   );

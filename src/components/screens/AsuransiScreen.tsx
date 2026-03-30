@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ActionButton } from "@/components/ui/ActionButton";
+import { StatusBadge } from "@/components/ui/StatusBadge";
 
 interface AsuransiScreenProps {
   isActive: boolean;
@@ -11,153 +13,152 @@ export function AsuransiScreen({ isActive }: AsuransiScreenProps) {
 
   return (
     <motion.div
-      initial={{ opacity: 1, y: 0 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 12 }}
-      transition={{ duration: 0.25, ease: "easeOut" }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
       className="absolute inset-0 overflow-y-auto overflow-x-hidden scrollbar-hide pb-[90px]"
     >
-      <div className="px-[22px] pt-5 pb-4">
-        <div className="text-[9px] tracking-[0.22em] uppercase text-[rgba(240,240,242,0.28)] mb-1" style={{ fontFamily: "Roboto Mono, monospace" }}>
-          // Smart Contract Insurance
+      {/* Header */}
+      <div className="px-5 pt-5 pb-3">
+        <div className="text-[12px] text-[#6B7280] mb-0.5" style={{ fontFamily: "Inter, sans-serif" }}>
+          smart contract insurance
         </div>
-        <div className="text-[24px] font-bold" style={{ fontFamily: "Bitter, serif" }}>
-          Klaim<em className="italic text-[#ff4444]">Asuransi</em>
+        <div className="text-[24px] font-bold text-[#111827]" style={{ fontFamily: "Inter, sans-serif", letterSpacing: "-0.02em" }}>
+          asuransi
         </div>
       </div>
 
-      <div className="mx-[22px] mb-4 bg-[#1c1c1f] border border-[rgba(255,255,255,0.08)] rounded-xl overflow-hidden">
-        <div className="px-4 py-4 bg-gradient-to-r from-[rgba(46,204,113,0.12)] to-transparent border-b border-[rgba(255,255,255,0.08)] flex items-center gap-2.5">
+      {/* Policy Card */}
+      <div className="mx-5 mb-4 bg-white border border-[rgba(17,24,39,0.08)] rounded-xl overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.05)]">
+        <div className="px-4 py-4 bg-[rgba(16,185,129,0.06)] border-b border-[rgba(17,24,39,0.06)] flex items-center gap-3">
           <div className="text-[24px]">🛡️</div>
           <div>
-            <div className="text-[14px] font-bold mb-0.5">Polis Aktif · PANORA-INS</div>
-            <div className="text-[11px] text-[#6e6e7a]">Smart contract otomatis · Metaplex · Solana</div>
+            <div className="text-[14px] font-semibold text-[#111827] mb-0.5">polis aktif · PANORA-INS</div>
+            <div className="text-[12px] text-[#6B7280]">smart contract otomatis</div>
           </div>
         </div>
-        <div className="px-4 py-4 grid grid-cols-2 gap-3">
+        <div className="px-4 py-4 grid grid-cols-2 gap-4">
           <div>
-            <div className="text-[10px] text-[rgba(240,240,242,0.28)] tracking-wide uppercase" style={{ fontFamily: "Roboto Mono, monospace" }}>No. Polis</div>
-            <div className="text-[13px] text-[#ff6b2b]" style={{ fontFamily: "Roboto Mono, monospace" }}>INS-2025-0842</div>
+            <div className="text-[11px] text-[#6B7280] tracking-wide" style={{ fontFamily: "Inter, sans-serif" }}>no. polis</div>
+            <div className="text-[13px] font-medium text-[#FF6B00]" style={{ fontFamily: "Inter, sans-serif" }}>INS-2025-0842</div>
           </div>
           <div>
-            <div className="text-[10px] text-[rgba(240,240,242,0.28)] tracking-wide uppercase" style={{ fontFamily: "Roboto Mono, monospace" }}>Coverage</div>
-            <div className="text-[16px] font-bold text-[#2ecc71]" style={{ fontFamily: "Bitter, serif" }}>Rp 500jt</div>
+            <div className="text-[11px] text-[#6B7280] tracking-wide" style={{ fontFamily: "Inter, sans-serif" }}>coverage</div>
+            <div className="text-[16px] font-bold text-[#10B981]" style={{ fontFamily: "Inter, sans-serif", letterSpacing: "-0.02em" }}>Rp 500jt</div>
           </div>
           <div>
-            <div className="text-[10px] text-[rgba(240,240,242,0.28)] tracking-wide uppercase" style={{ fontFamily: "Roboto Mono, monospace" }}>Trip Tercakup</div>
-            <div className="text-[16px] font-bold" style={{ fontFamily: "Bitter, serif" }}>14 trip</div>
+            <div className="text-[11px] text-[#6B7280] tracking-wide" style={{ fontFamily: "Inter, sans-serif" }}>trip tercakup</div>
+            <div className="text-[16px] font-bold text-[#111827]" style={{ fontFamily: "Inter, sans-serif" }}>14 trip</div>
           </div>
           <div>
-            <div className="text-[10px] text-[rgba(240,240,242,0.28)] tracking-wide uppercase" style={{ fontFamily: "Roboto Mono, monospace" }}>Masa Berlaku</div>
-            <div className="text-[13px] font-bold" style={{ fontFamily: "Bitter, serif" }}>31 Des 2025</div>
+            <div className="text-[11px] text-[#6B7280] tracking-wide" style={{ fontFamily: "Inter, sans-serif" }}>berlaku sampai</div>
+            <div className="text-[14px] font-medium text-[#111827]">31 Des 2025</div>
           </div>
         </div>
       </div>
 
-      <div className="px-[22px] mb-3">
-        <div className="text-[9px] tracking-[0.22em] uppercase text-[rgba(240,240,242,0.28)]" style={{ fontFamily: "Roboto Mono, monospace" }}>
-          // 1 Klaim Aktif
+      {/* Active Claim */}
+      <div className="px-5 mb-2">
+        <div className="text-[12px] text-[#6B7280]" style={{ fontFamily: "Inter, sans-serif" }}>
+          klaim aktif
         </div>
       </div>
 
       <motion.div 
-        whileTap={{ scale: 0.98 }} 
-        className="mx-[22px] mb-3 bg-[rgba(245,197,24,0.07)] border border-[rgba(245,197,24,0.3)] rounded-xl p-[18px] cursor-pointer"
+        whileTap={{ scale: 0.99 }} 
+        className="mx-5 mb-4 bg-[rgba(245,158,11,0.06)] border border-[rgba(245,158,11,0.2)] rounded-xl p-4 cursor-pointer"
       >
         <div className="flex justify-between items-start mb-3">
           <div>
-            <div className="text-[9px] tracking-[0.15em] uppercase text-[#6e6e7a]" style={{ fontFamily: "Roboto Mono, monospace" }}>// CLAIM-2025-0031</div>
-            <div className="text-[17px] font-bold text-[#f5c518]" style={{ fontFamily: "Bitter, serif" }}>Kerusakan Suhu<br />Terdeteksi</div>
+            <div className="text-[11px] text-[#6B7280] mb-0.5" style={{ fontFamily: "Inter, sans-serif" }}>CLAIM-2025-0031</div>
+            <div className="text-[17px] font-bold text-[#F59E0B]" style={{ fontFamily: "Inter, sans-serif", letterSpacing: "-0.02em" }}>
+              kerusakan suhu terdeteksi
+            </div>
           </div>
-          <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-[20px] text-[9px] font-bold tracking-wide uppercase bg-[rgba(245,197,24,0.12)] text-[#f5c518] border border-[rgba(245,197,24,0.3)]">Diproses</div>
+          <StatusBadge status="menunggu" />
         </div>
-        <div className="text-[12px] text-[#6e6e7a] leading-relaxed mb-3.5">
-          Pada trip Magelang → Jakarta tgl 10 Jul, suhu kargo mencapai 12.4°C selama 18 menit (threshold: 8°C). Smart contract otomatis terpicu dan klaim dikirim ke insurer.
+        
+        <div className="text-[13px] text-[#6B7280] leading-relaxed mb-4">
+          trip magelang → jakarta tgl 10 jul, suhu kargo mencapai 12.4°C selama 18 menit (threshold: 8°C). smart contract otomatis terpicu.
         </div>
-        <div className="grid grid-cols-2 gap-2.5 mb-3.5">
+        
+        <div className="grid grid-cols-2 gap-3 mb-4">
           <div>
-            <div className="text-[9px] text-[rgba(240,240,242,0.28)] tracking-wide uppercase" style={{ fontFamily: "Roboto Mono, monospace" }}>Nilai Klaim</div>
-            <div className="text-[15px] font-bold text-[#f5c518]" style={{ fontFamily: "Bitter, serif" }}>Rp 8.500.000</div>
+            <div className="text-[11px] text-[#6B7280] tracking-wide" style={{ fontFamily: "Inter, sans-serif" }}>nilai klaim</div>
+            <div className="text-[15px] font-bold text-[#F59E0B]" style={{ fontFamily: "Inter, sans-serif", letterSpacing: "-0.02em" }}>Rp 8.500.000</div>
           </div>
           <div>
-            <div className="text-[9px] text-[rgba(240,240,242,0.28)] tracking-wide uppercase" style={{ fontFamily: "Roboto Mono, monospace" }}>Penyebab</div>
-            <div className="text-[13px] font-bold">Kompresor AC mati 18 mnt</div>
-          </div>
-          <div>
-            <div className="text-[9px] text-[rgba(240,240,242,0.28)] tracking-wide uppercase" style={{ fontFamily: "Roboto Mono, monospace" }}>Komoditas</div>
-            <div className="text-[14px] font-bold">🥬 Cabai 2.1T</div>
-          </div>
-          <div>
-            <div className="text-[9px] text-[rgba(240,240,242,0.28)] tracking-wide uppercase" style={{ fontFamily: "Roboto Mono, monospace" }}>Bukti On-Chain</div>
-            <div className="text-[11px] text-[#ff6b2b]" style={{ fontFamily: "Roboto Mono, monospace" }}>Tx: 7mPq...kR4x</div>
+            <div className="text-[11px] text-[#6B7280] tracking-wide" style={{ fontFamily: "Inter, sans-serif" }}>komoditas</div>
+            <div className="text-[14px] font-medium text-[#111827]">cabai 2.1T</div>
           </div>
         </div>
         
         {/* Timeline */}
-        <div className="flex flex-col gap-1.5 mb-3.5">
-          <div className="flex items-center gap-2 text-[11px]">
-            <div className="w-2 h-2 rounded-full bg-[#2ecc71] shrink-0" />
-            <span className="text-[#2ecc71] font-bold">✓ Smart contract terpicu otomatis</span>
-            <span className="text-[#6e6e7a] text-[10px] ml-auto">10 Jul 14:22</span>
+        <div className="flex flex-col gap-2 mb-4">
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 rounded-full bg-[#10B981] shrink-0" />
+            <span className="text-[12px] text-[#10B981] font-medium flex-1">smart contract terpicu</span>
+            <span className="text-[11px] text-[#6B7280]">10 jul 14:22</span>
           </div>
-          <div className="flex items-center gap-2 text-[11px]">
-            <div className="w-2 h-2 rounded-full bg-[#2ecc71] shrink-0" />
-            <span className="text-[#2ecc71] font-bold">✓ Data IoT diverifikasi on-chain</span>
-            <span className="text-[#6e6e7a] text-[10px] ml-auto">10 Jul 14:23</span>
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 rounded-full bg-[#10B981] shrink-0" />
+            <span className="text-[12px] text-[#10B981] font-medium flex-1">data IoT terverifikasi</span>
+            <span className="text-[11px] text-[#6B7280]">10 jul 14:23</span>
           </div>
-          <div className="flex items-center gap-2 text-[11px]">
-            <div className="w-2 h-2 rounded-full bg-[#f5c518] animate-blink-pulse shrink-0" />
-            <span className="text-[#f5c518] font-bold">⏳ Verifikasi insurer (1–2 hari kerja)</span>
-            <span className="text-[#6e6e7a] text-[10px] ml-auto">Pending</span>
+          <div className="flex items-center gap-2">
+            <motion.div 
+              className="w-2 h-2 rounded-full bg-[#F59E0B] shrink-0"
+              animate={{ opacity: [1, 0.4, 1] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            />
+            <span className="text-[12px] text-[#F59E0B] font-medium flex-1">verifikasi insurer</span>
+            <span className="text-[11px] text-[#6B7280]">1-2 hari</span>
           </div>
-          <div className="flex items-center gap-2 text-[11px]">
-            <div className="w-2 h-2 rounded-full bg-[rgba(255,255,255,0.08)] shrink-0" />
-            <span className="text-[#6e6e7a]">Pencairan ke wallet PANORA</span>
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 rounded-full bg-[rgba(17,24,39,0.15)] shrink-0" />
+            <span className="text-[12px] text-[#6B7280] flex-1">pencairan</span>
           </div>
         </div>
         
-        <motion.button 
-          whileTap={{ scale: 0.97 }}
-          className="w-full py-2.5 bg-[#f5c518] text-[#0c0c0d] rounded-lg text-[12px] font-extrabold tracking-wide cursor-pointer"
-        >
-          Lihat Bukti On-Chain →
-        </motion.button>
+        <ActionButton variant="secondary" size="sm">
+          lihat bukti on-chain
+        </ActionButton>
       </motion.div>
 
-      <div className="px-[22px] mb-3">
-        <div className="text-[9px] tracking-[0.22em] uppercase text-[rgba(240,240,242,0.28)]" style={{ fontFamily: "Roboto Mono, monospace" }}>// Klaim Selesai</div>
+      {/* Completed Claims */}
+      <div className="px-5 mb-2">
+        <div className="text-[12px] text-[#6B7280]" style={{ fontFamily: "Inter, sans-serif" }}>
+          klaim selesai
+        </div>
       </div>
 
       <motion.div 
-        whileTap={{ scale: 0.98 }} 
-        className="mx-[22px] bg-[rgba(46,204,113,0.12)] border border-[rgba(46,204,113,0.3)] rounded-xl p-[18px] cursor-pointer"
+        whileTap={{ scale: 0.99 }} 
+        className="mx-5 mb-4 bg-[rgba(16,185,129,0.06)] border border-[rgba(16,185,129,0.2)] rounded-xl p-4 cursor-pointer"
       >
         <div className="flex justify-between items-start mb-3">
           <div>
-            <div className="text-[9px] tracking-[0.15em] uppercase text-[#6e6e7a]" style={{ fontFamily: "Roboto Mono, monospace" }}>// CLAIM-2025-0018</div>
-            <div className="text-[17px] font-bold text-[#2ecc71]" style={{ fontFamily: "Bitter, serif" }}>Klaim Dicairkan</div>
+            <div className="text-[11px] text-[#6B7280] mb-0.5" style={{ fontFamily: "Inter, sans-serif" }}>CLAIM-2025-0018</div>
+            <div className="text-[17px] font-bold text-[#10B981]" style={{ fontFamily: "Inter, sans-serif", letterSpacing: "-0.02em" }}>
+              klaim dicairkan
+            </div>
           </div>
-          <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-[20px] text-[9px] font-bold tracking-wide uppercase bg-[rgba(46,204,113,0.12)] text-[#2ecc71] border border-[rgba(46,204,113,0.3)]">Selesai</div>
+          <StatusBadge status="selesai" />
         </div>
-        <div className="text-[12px] text-[#6e6e7a] leading-relaxed mb-3.5">
-          Kerusakan suhu pada rute Semarang → Jakarta. Smart contract mencairkan klaim dalam 48 jam kerja.
+        <div className="text-[13px] text-[#6B7280] leading-relaxed mb-3">
+          kerusakan suhu rute semarang → jakarta. smart contract mencairkan klaim dalam 48 jam.
         </div>
-        <div className="grid grid-cols-2 gap-2.5 mb-3.5">
+        <div className="grid grid-cols-2 gap-3">
           <div>
-            <div className="text-[9px] text-[rgba(240,240,242,0.28)] tracking-wide uppercase" style={{ fontFamily: "Roboto Mono, monospace" }}>Dicairkan</div>
-            <div className="text-[15px] font-bold text-[#2ecc71]" style={{ fontFamily: "Bitter, serif" }}>Rp 4.200.000</div>
+            <div className="text-[11px] text-[#6B7280] tracking-wide" style={{ fontFamily: "Inter, sans-serif" }}>dicairkan</div>
+            <div className="text-[15px] font-bold text-[#10B981]" style={{ fontFamily: "Inter, sans-serif", letterSpacing: "-0.02em" }}>Rp 4.200.000</div>
           </div>
           <div>
-            <div className="text-[9px] text-[rgba(240,240,242,0.28)] tracking-wide uppercase" style={{ fontFamily: "Roboto Mono, monospace" }}>Waktu Proses</div>
-            <div className="text-[15px] font-bold">2 Hari Kerja</div>
+            <div className="text-[11px] text-[#6B7280] tracking-wide" style={{ fontFamily: "Inter, sans-serif" }}>waktu proses</div>
+            <div className="text-[15px] font-medium text-[#111827]">2 hari kerja</div>
           </div>
         </div>
-        <motion.button 
-          whileTap={{ scale: 0.97 }}
-          className="w-full py-2.5 bg-[#2ecc71] text-[#0c0c0d] rounded-lg text-[12px] font-extrabold tracking-wide cursor-pointer"
-        >
-          Lihat Riwayat Pencairan
-        </motion.button>
       </motion.div>
     </motion.div>
   );

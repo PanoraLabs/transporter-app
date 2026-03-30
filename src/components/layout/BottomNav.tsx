@@ -9,152 +9,94 @@ interface BottomNavProps {
 
 const navItems = [
   {
-    id: "dash",
-    label: "Beranda",
+    id: "beranda",
+    label: "beranda",
     icon: ({ active }: { active: boolean }) => (
-      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-        <rect
-          x="2"
-          y="2"
-          width="8"
-          height="8"
-          rx="2"
-          stroke={active ? "#ff6b2b" : "currentColor"}
-          strokeWidth="1.7"
-          fill={active ? "rgba(255,107,43,.12)" : "none"}
-        />
-        <rect
-          x="12"
-          y="2"
-          width="8"
-          height="8"
-          rx="2"
-          stroke="currentColor"
-          strokeWidth="1.7"
-          opacity="0.35"
-        />
-        <rect
-          x="2"
-          y="12"
-          width="8"
-          height="8"
-          rx="2"
-          stroke="currentColor"
-          strokeWidth="1.7"
-          opacity="0.35"
-        />
-        <rect
-          x="12"
-          y="12"
-          width="8"
-          height="8"
-          rx="2"
-          stroke="currentColor"
-          strokeWidth="1.7"
-          opacity="0.35"
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path
+          d="M3 9.5L12 4l9 5.5v9.5a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1V9.5z"
+          stroke={active ? "#FF6B00" : "currentColor"}
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill={active ? "rgba(255,107,0,0.08)" : "none"}
         />
       </svg>
     ),
   },
   {
-    id: "log",
-    label: "IoT Log",
+    id: "pengiriman",
+    label: "pengiriman",
+    badge: 2,
     icon: ({ active }: { active: boolean }) => (
-      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path
+          d="M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6l-4-4H6l-4 4v2"
+          stroke={active ? "#FF6B00" : "currentColor"}
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
         <circle
-          cx="11"
-          cy="11"
-          r="8"
-          stroke={active ? "#ff6b2b" : "currentColor"}
-          strokeWidth="1.7"
+          cx="9"
+          cy="19"
+          r="1.5"
+          fill={active ? "#FF6B00" : "currentColor"}
+        />
+        <circle
+          cx="15"
+          cy="19"
+          r="1.5"
+          fill={active ? "#FF6B00" : "currentColor"}
         />
         <path
-          d="M11 7V11L14 13"
-          stroke={active ? "#ff6b2b" : "currentColor"}
-          strokeWidth="1.7"
+          d="M12 6v4"
+          stroke={active ? "#FF6B00" : "currentColor"}
+          strokeWidth="1.8"
           strokeLinecap="round"
         />
-        {active && (
-          <>
-            <circle cx="17" cy="5" r="2.5" fill="#ff6b2b" opacity="0.5" />
-            <circle cx="17" cy="5" r="2.5" fill="none" stroke="#ff6b2b" strokeWidth="1">
-              <animate attributeName="r" from="2.5" to="5" dur="1.8s" repeatCount="indefinite" />
-              <animate attributeName="opacity" from="0.5" to="0" dur="1.8s" repeatCount="indefinite" />
-            </circle>
-          </>
-        )}
       </svg>
-    ),
-  },
-  {
-    id: "backload",
-    label: "Backload",
-    badge: 4,
-    icon: ({ active }: { active: boolean }) => (
-      <div className="relative w-[22px] h-[22px] flex items-center justify-center">
-        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-          <path
-            d="M4 14L11 18L18 14V8L11 4L4 8V14Z"
-            stroke={active ? "#ff6b2b" : "currentColor"}
-            strokeWidth="1.7"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M4 8L11 12L18 8"
-            stroke={active ? "#ff6b2b" : "currentColor"}
-            strokeWidth="1.5"
-          />
-          <path
-            d="M11 12V18"
-            stroke={active ? "#ff6b2b" : "currentColor"}
-            strokeWidth="1.5"
-          />
-        </svg>
-      </div>
-    ),
-  },
-  {
-    id: "asuransi",
-    label: "Klaim",
-    badge: 1,
-    icon: ({ active }: { active: boolean }) => (
-      <div className="relative w-[22px] h-[22px] flex items-center justify-center">
-        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-          <path
-            d="M11 3L4 6V12C4 15.5 7 18.5 11 20C15 18.5 18 15.5 18 12V6L11 3Z"
-            stroke={active ? "#ff6b2b" : "currentColor"}
-            strokeWidth="1.7"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M8 11L10 13L14 9"
-            stroke={active ? "#ff6b2b" : "currentColor"}
-            strokeWidth="1.7"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </div>
     ),
   },
   {
     id: "riwayat",
-    label: "Riwayat",
+    label: "riwayat",
     icon: ({ active }: { active: boolean }) => (
-      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path
+          d="M8 6h8M8 10h8M8 14h5"
+          stroke={active ? "#FF6B00" : "currentColor"}
+          strokeWidth="1.8"
+          strokeLinecap="round"
+        />
         <rect
-          x="4"
+          x="3"
           y="3"
-          width="14"
-          height="16"
-          rx="2.5"
-          stroke={active ? "#ff6b2b" : "currentColor"}
-          strokeWidth="1.7"
+          width="18"
+          height="18"
+          rx="2"
+          stroke={active ? "#FF6B00" : "currentColor"}
+          strokeWidth="1.8"
+        />
+      </svg>
+    ),
+  },
+  {
+    id: "profil",
+    label: "profil",
+    icon: ({ active }: { active: boolean }) => (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <circle
+          cx="12"
+          cy="8"
+          r="4"
+          stroke={active ? "#FF6B00" : "currentColor"}
+          strokeWidth="1.8"
         />
         <path
-          d="M8 8H14M8 11H14M8 14H11"
-          stroke={active ? "#ff6b2b" : "currentColor"}
-          strokeWidth="1.5"
+          d="M4 20c0-4 4-6 8-6s8 2 8 6"
+          stroke={active ? "#FF6B00" : "currentColor"}
+          strokeWidth="1.8"
           strokeLinecap="round"
         />
       </svg>
@@ -164,7 +106,10 @@ const navItems = [
 
 export function BottomNav({ activeTab, onTabChange }: BottomNavProps) {
   return (
-    <div className="h-20 bg-[#141416] border-t border-[rgba(255,255,255,0.08)] flex items-center px-1 pb-3 z-50">
+    <div 
+      className="h-[72px] bg-white border-t border-[rgba(17,24,39,0.08)] flex items-center px-2 pb-2 z-50"
+      style={{ boxShadow: "0 -4px 20px rgba(0,0,0,0.04)" }}
+    >
       {navItems.map((item) => {
         const isActive = activeTab === item.id;
         return (
@@ -172,23 +117,23 @@ export function BottomNav({ activeTab, onTabChange }: BottomNavProps) {
             key={item.id}
             onClick={() => onTabChange(item.id)}
             className={`flex-1 flex flex-col items-center gap-1 py-2 rounded-xl cursor-pointer relative ${
-              isActive ? "text-[#ff6b2b]" : "text-[rgba(240,240,242,0.28)]"
+              isActive ? "text-[#FF6B00]" : "text-[#6B7280]"
             }`}
             whileTap={{ scale: 0.95 }}
           >
             <div className="relative">
               <item.icon active={isActive} />
               {item.badge && (
-                <div className="absolute -top-1 -right-1 w-[15px] h-[15px] bg-[#f5c518] rounded-full text-[8px] font-extrabold flex items-center justify-center text-[#0c0c0d] border-2 border-[#0c0c0d]">
+                <div className="absolute -top-0.5 -right-1 w-4 h-4 bg-[#FF6B00] rounded-full text-[10px] font-bold flex items-center justify-center text-white">
                   {item.badge}
                 </div>
               )}
             </div>
             <span
-              className={`text-[9px] font-bold tracking-wider uppercase ${
-                isActive ? "text-[#ff6b2b]" : "text-[rgba(240,240,242,0.28)]"
+              className={`text-[11px] font-medium ${
+                isActive ? "text-[#FF6B00]" : "text-[#6B7280]"
               }`}
-              style={{ fontFamily: "Roboto Mono, monospace" }}
+              style={{ fontFamily: "Inter, sans-serif" }}
             >
               {item.label}
             </span>
